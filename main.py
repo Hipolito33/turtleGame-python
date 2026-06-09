@@ -36,13 +36,33 @@ def mover_baixo():
     confirma_fim()
 
 def mover_esquerda():
-    setheading(180)
-    forward(distancia_movimento)
-    confirma_fim()
-
-def mover_direita():
     setheading(0)
     forward(distancia_movimento)
     confirma_fim()
 
+def mover_direita():
+    setheading(180)
+    forward(distancia_movimento)
+    confirma_fim()
+
+##Confirma se a tartaruga chegou ao mar(fim do jogo).
+##Esconde a tartaruga -> pinta a tela de branco -> escreve que você venceu.
+def confirma_fim():
+    if xcor() > 100:
+        hideturtle()
+        color("white")
+        write("VOCÊ VENCEU!")
+
+        ##Desativa os controles ao vencer o game.
+        Screen().onkey(None,"Up")
+        Screen().onkey(None,"Down")
+        Screen().onkey(None,"Right")
+        Screen().onkey(None,"Left")
+
+Screen().onkey(mover_cima,"Up")
+Screen().onkey(mover_baixo,"Down")
+Screen().onkey(mover_esquerda,"Right")
+Screen().onkey(mover_direita,"Left")
+
+Screen().listen()
 done()
